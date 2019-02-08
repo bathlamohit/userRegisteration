@@ -1,0 +1,59 @@
+<form style="border:1px solid #ccc" [formGroup]="registerForm" (ngSubmit)="createUser()">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label for="email"><b>User Name</b></label>
+    <input type="text" placeholder="Enter User Name" formControlName="username">
+    <div class="help-block" *ngIf="!registerForm.get('username').valid && registerForm.get('username').touched">
+      <span *ngIf="registerForm.get('username').errors['required']">Can't be blank!<br></span>
+    </div>
+    <label for="email"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" formControlName="name">
+    <div class="help-block" *ngIf="!registerForm.get('name').valid && registerForm.get('name').touched">
+      <span *ngIf="registerForm.get('name').errors['required']">Can't be blank!<br></span>
+    </div>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" formControlName="email">
+    <div class="help-block" *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched">
+      <span *ngIf="registerForm.get('email').errors['required']">Can't be blank!<br></span>
+      <span *ngIf="registerForm.get('email').errors['email']">Has invalid format!</span>
+    </div>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" formControlName="password" pattern="^[a-z0-9_-]{8,15}$">
+    <div class="help-block" *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched">
+      <span *ngIf="registerForm.get('password').errors['required']">Can't be blank!<br></span>
+      <span *ngIf="registerForm.get('password').errors?.pattern">Has invalid format!</span>
+    </div>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" formControlName="confirmPassword" name="confirmPassword">
+    <div class="help-block"
+      *ngIf="!registerForm.get('confirmPassword').valid && registerForm.get('confirmPassword').touched">
+      <span *ngIf="registerForm.get('confirmPassword').errors['required']">Can't be blank!<br></span>
+      <span *ngIf="registerForm.get('confirmPassword').errors['MatchPassword']">Password Is Not Matched!</span>
+    </div>
+
+
+    <label for="number"><b>Mobile Number</b></label>
+    <input type="text" placeholder="Enter Mobile Number" formControlName="number" pattern="^[0-9]{10}$" maxlength="10">
+    <div class="help-block" *ngIf="!registerForm.get('number').valid && registerForm.get('number').touched">
+      <span *ngIf="registerForm.get('number').errors['required']">Please Enter Mobile Number!<br></span>
+      <span *ngIf="registerForm.get('number').errors['pattern']">Please Provide Valid Number</span>
+    </div>
+
+    <label for="address"><b>Address</b></label>
+    <input type="text" placeholder="Enter Address" formControlName="address" maxlength="30">
+    <div class="help-block" *ngIf="!registerForm.get('address').valid && registerForm.get('address').touched">
+      <span *ngIf="registerForm.get('address').errors['required']">Please Enter Mobile Number!<br></span>
+    </div>
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>
